@@ -5,3 +5,14 @@ By default your default vpc, will have a default Network Access Control List whi
 NACLs are stateless unlike security groups. Security groups are statefull ,if you add an inbound rule say for port 80, it is automatically allowed out, meaning outbound rule for that particular port need not be explicitly added. But in NACLs you need to provide explicit inbound and outbound rules
 In security groups you cannot deny traffic from a particular instance, by default everything is denied. You can set rules only to allow. Where as in NACLs you can set rules both to deny and allow. There by denying and allowing only the instances of your choice. You get to take more granular decisions.
 Security groups evaluate all the rules in them before allowing a traffic . NACLs do it in the number order, from top to bottom like, if your rule #0 says allow all HTTP traffic and your rule #100 says don't allow HTTP traffic from ip address 10.0.2.156 , it's will not be able to deny the traffic, because rule #0 has already allowed traffic. So it's good practice to have your deny rules first in NACL and followed by allow rules. AWS best practice is to number your rules in increment of 100s in NACL. By deny rules first I mean, specifying narrow deny rules, like for specific ports only. And then write your allow rules.
+
+
+
+Security Groups supports only Allow rules.
+
+Network ACL supports Allow and Deny rules.
+
+Security Group is Stateful, any changes applied to an incoming rules is automatically applied to an outgoing rule.
+
+Network ACL is Stateless changes applied to incoming will not be applied to Security Group.
+
