@@ -16,3 +16,19 @@ Security Group is Stateful, any changes applied to an incoming rules is automati
 
 Network ACL is Stateless changes applied to incoming will not be applied to Security Group.
 
+Security groups are tied to an instance.
+
+Network ACL are tied to the subnet.
+
+Secuity group is the first layer of the defense.
+
+Network ACL is the second layer of the defense.
+
+
+
+Security Group by default is ‘Deny All’ inbound. ACL by default is ‘Allow All’ both inbound & outbound.
+In ACL you can specify both allow and deny. In SG, you can only specify allow entries.
+Security Groups are stateful, i.e- if you open inbound port 80, it will automatically open outbound port 80 as well. In an ACL, you have to manually do this for both inbound and outbound i.e -stateless.
+Security Groups are applied to individual resources. i.e- EC2, RDS etc. ACL is applied on a network level i.e- VPC.
+ACLs take precedence as traffic hits it before the Security group. If port 80 is blocked on the ACL, it will not come through to the security group even if it is allowed on the security group.
+
